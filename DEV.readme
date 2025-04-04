@@ -7,3 +7,9 @@
 
 extensoes
 - simple react snippets
+- tailwind intelisense
+- instalar eslint
+- instalar Prettier - Code formatter
+- instalar Plugin Prettier para tailwind,  doc https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
+   npm install -D prettier prettier-plugin-tailwindcss 
+  
