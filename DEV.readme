@@ -1,0 +1,9 @@
+1 - create-react-app@14.2.16
+2 - instalar prisma 5.1.21
+3 - criar con na neon, e mudar o computed para o minimo para consumir menos valor possivel
+4 - configurar conection string no env
+5 - gerar migration
+
+
+extensoes
+- simple react snippets
