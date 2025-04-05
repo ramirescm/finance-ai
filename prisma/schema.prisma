@@ -51,4 +51,5 @@ enum TransactionPaymentMethod {
   BANK_SLIP
   CASH
   PIX
+  OTHER
 }
