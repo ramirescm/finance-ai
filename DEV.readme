@@ -19,3 +19,19 @@ extensoes
   
 nest obs.:
 _ na frente do nome da pasta para deixar privada
+
+
+git hooks sao comandos que rodamos antes de fazer um commit
+formatar codigo com prettier e rodar eslint independente do usuario ter ou nao na maquina
+
+npm install -D husky@9.1.6
+npm install -D lint-staged@12.3.2
+
+// para inicializar o husky no projeto
+npx husky init 
+
+// vai criar o arquivo pre-commit dentro dele configuramos o que queremos rodar antes do commit
+
+ex.
+npx lint-staged // só roda o comando nos arquivos "staged" ou seja que vao subir
+criamos o arquivo .lintstagedrc.json na raiz do projeto com a configuracao para filtrar apenas os arquivos staged para que sejam formatados
