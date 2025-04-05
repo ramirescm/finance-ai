@@ -35,3 +35,7 @@ npx husky init
 ex.
 npx lint-staged // só roda o comando nos arquivos "staged" ou seja que vao subir
 criamos o arquivo .lintstagedrc.json na raiz do projeto com a configuracao para filtrar apenas os arquivos staged para que sejam formatados
+
+
+conventional commits 
+npm install git-commit-msg-linter@5.0.8
