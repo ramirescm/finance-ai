@@ -3,7 +3,9 @@
 3 - criar con na neon, e mudar o computed para o minimo para consumir menos valor possivel
 4 - configurar conection string no env
 5 - gerar migration
-
+6 - instalar > npx shadcn@2.1.3 int 
+mover para lib para dentro de app e colocar _ na frente pra deixar privada
+alterar o componentes.json arquivos de cofiguracao dos compoentes do shadcn colocando para apontar dentro da pasta app
 
 extensoes
 - simple react snippets
@@ -13,3 +15,5 @@ extensoes
 - instalar Plugin Prettier para tailwind,  doc https://tailwindcss.com/blog/automatic-class-sorting-with-prettier
    npm install -D prettier prettier-plugin-tailwindcss 
   
+nest obs.:
+_ na frente do nome da pasta para deixar privada
