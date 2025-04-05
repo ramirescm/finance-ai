@@ -68,3 +68,8 @@ npx prisma migrate dev --name add_user_id_to_transaction // add migration
 npx prisma studio // abre console de banco
 
 todo componentes criado no next é um server componente por padrãos
+
+
+client components > server actions
+
+https://medium.com/@khalil.abid.tn/mastering-next-js-structuring-your-large-scale-project-for-success-6135773e21b0
