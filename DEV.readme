@@ -6,6 +6,8 @@
 6 - instalar > npx shadcn@2.1.3 int 
 mover para lib para dentro de app e colocar _ na frente pra deixar privada
 alterar o componentes.json arquivos de cofiguracao dos compoentes do shadcn colocando para apontar dentro da pasta app
+7 - clerk autenticacao npm install @clerk/nextjs@5.7.5
+8 - clerk themes npm install @clerk/themes@2.1.37
 
 extensoes
 - simple react snippets
