@@ -39,3 +39,8 @@ criamos o arquivo .lintstagedrc.json na raiz do projeto com a configuracao para 
 
 conventional commits 
 npm install git-commit-msg-linter@5.0.8
+
+
+npx prisma migrate dev // em dev
+npx prisma migrate deploy // em producao
+npx prisma migrate dev --name add_user_id_to_transaction // add migration
