@@ -13,6 +13,7 @@ import { TransactionType } from "@prisma/client";
 import PercentageItem from "./percentage-item";
 import { TransactionPercentagePerType } from "@/app/_data/get-dashboard/types";
 import { TrendingUpIcon, TrendingDownIcon, PiggyBankIcon } from "lucide-react";
+import { getSafePercentage } from "@/app/_utils/get-safe-percentage";
 
 const chartConfig = {
   [TransactionType.INVESTMENT]: {
@@ -83,17 +84,19 @@ const TransactionsPieChart = ({
           <PercentageItem
             icon={<TrendingUpIcon size={16} className="text-primary" />}
             title="Receita"
-            value={typesPercentage[TransactionType.DEPOSIT]}
+            value={getSafePercentage(typesPercentage[TransactionType.DEPOSIT])}
           />
           <PercentageItem
             icon={<TrendingDownIcon size={16} className="text-red-500" />}
             title="Despesas"
-            value={typesPercentage[TransactionType.EXPENSE]}
+            value={getSafePercentage(typesPercentage[TransactionType.EXPENSE])}
           />
           <PercentageItem
             icon={<PiggyBankIcon size={16} />}
             title="Investido"
-            value={typesPercentage[TransactionType.INVESTMENT]}
+            value={getSafePercentage(
+              typesPercentage[TransactionType.INVESTMENT],
+            )}
           />
         </div>
       </CardContent>

@@ -4,6 +4,16 @@ import {
   TransactionType,
 } from "@prisma/client";
 
+export const TRANSACTION_PAYMENT_METHOD_ICONS = {
+  [TransactionPaymentMethod.CREDIT_CARD]: "credit-card.svg",
+  [TransactionPaymentMethod.DEBIT_CARD]: "debit-card.svg",
+  [TransactionPaymentMethod.BANK_TRANSFER]: "bank-transfer.svg",
+  [TransactionPaymentMethod.BANK_SLIP]: "bank-slip.svg",
+  [TransactionPaymentMethod.CASH]: "money.svg",
+  [TransactionPaymentMethod.PIX]: "pix.svg",
+  [TransactionPaymentMethod.OTHER]: "other.svg",
+};
+
 export const TRANSACTION_CATEGORY_LABELS = {
   EDUCATION: "Educação",
   ENTERTAINMENT: "Entretenimento",
@@ -27,9 +37,18 @@ export const TRANSACTION_PAYMENT_METHOD_LABELS = {
 };
 
 export const TRANSACTION_TYPE_OPTIONS = [
-  { label: "Despesa", value: TransactionType.DEPOSIT },
-  { label: "Receita", value: TransactionType.EXPENSE },
-  { label: "Investimento", value: TransactionType.INVESTMENT },
+  {
+    value: TransactionType.EXPENSE,
+    label: "Despesa",
+  },
+  {
+    value: TransactionType.DEPOSIT,
+    label: "Depósito",
+  },
+  {
+    value: TransactionType.INVESTMENT,
+    label: "Investimento",
+  },
 ];
 
 export const TRANSACTION_PAYMENT_METHOD_OPTIONS = [
