@@ -22,6 +22,8 @@ npx shadcn@2.1.3 add form
 npx shadcn@2.1.3 add input
 npx shadcn@2.1.3 add select
 npx shadcn@2.1.3 add popover calendar // datepicker
+npx shadcn@2.1.3 add card
+npx shadcn@2.1.3 add chart
 
 asChild // usa para dizer que deve renderizar o filho, verificar os casos onde foi usado
 
@@ -68,8 +70,9 @@ npx prisma migrate dev --name add_user_id_to_transaction // add migration
 npx prisma studio // abre console de banco
 
 todo componentes criado no next é um server componente por padrãos
-
+todo arquivo statico coloca na pasta public, o next já otimiza com um cache/cdn
 
 client components > server actions
+tod
 
 https://medium.com/@khalil.abid.tn/mastering-next-js-structuring-your-large-scale-project-for-success-6135773e21b0
