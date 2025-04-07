@@ -24,6 +24,8 @@ npx shadcn@2.1.3 add select
 npx shadcn@2.1.3 add popover calendar // datepicker
 npx shadcn@2.1.3 add card
 npx shadcn@2.1.3 add chart
+npx shadcn@2.1.3 add scroll-area
+npx shadcn@2.1.3 add progress
 
 asChild // usa para dizer que deve renderizar o filho, verificar os casos onde foi usado
 
