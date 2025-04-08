@@ -8,15 +8,12 @@ export const createStripeCheckout = async () => {
   if (!userId) {
     throw new Error("Unauthorized");
   }
-
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error("Stripe secret key not found");
   }
-
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2025-02-24.acacia",
+    apiVersion: "2024-10-28.acacia",
   });
-
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "subscription",
@@ -29,11 +26,10 @@ export const createStripeCheckout = async () => {
     },
     line_items: [
       {
-        price: process.env.STRIPE_PREMIUM_PLAN_PRODUCT_PRICE_ID_DEV,
+        price: process.env.STRIPE_PREMIUM_PLAN_PRICE_ID,
         quantity: 1,
       },
     ],
   });
-
   return { sessionId: session.id };
 };

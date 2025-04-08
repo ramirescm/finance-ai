@@ -1,24 +1,19 @@
 import { clerkClient } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
-import { Stripe } from "stripe";
+import Stripe from "stripe";
 
-// localhost:3000/api/webhooks/stripe
-// listen events from stripe locally
-// stripe listen --forward-to http://localhost:3000/api/webhooks/stripe
 export const POST = async (request: Request) => {
   if (!process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_WEBHOOK_SECRET) {
     return NextResponse.error();
   }
-
   const signature = request.headers.get("stripe-signature");
   if (!signature) {
     return NextResponse.error();
   }
   const text = await request.text();
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-    apiVersion: "2025-02-24.acacia",
+    apiVersion: "2024-10-28.acacia",
   });
-
   const event = stripe.webhooks.constructEvent(
     text,
     signature,
@@ -26,29 +21,53 @@ export const POST = async (request: Request) => {
   );
 
   switch (event.type) {
-    case "invoice.paid":
-      // updated user
-      const { customer, subscription, subscription_details } =
-        event.data.object;
+    case "invoice.paid": {
+      const invoice = event.data.object;
+      const customer = invoice.customer;
 
+      // Correto: subscription_details está dentro de parent
+      const subscription_details = invoice.parent?.subscription_details;
+      const subscription = subscription_details?.subscription;
       const clerkUserId = subscription_details?.metadata?.clerk_user_id;
+
+      console.log("User:", clerkUserId);
+      console.log("Customer:", customer);
+      console.log("Subscription ID:", subscription);
+
       if (!clerkUserId) {
+        console.log("errrooooooo");
         return NextResponse.error();
       }
       await clerkClient().users.updateUser(clerkUserId, {
-        publicMetadata: {
-          subscriptionPlan: "premium",
-        },
         privateMetadata: {
           stripeCustomerId: customer,
           stripeSubscriptionId: subscription,
         },
+        publicMetadata: {
+          subscriptionPlan: "premium",
+        },
       });
       break;
-
-    default:
-      break;
+    }
+    case "customer.subscription.deleted": {
+      // Remover plano premium do usuário
+      const subscription = await stripe.subscriptions.retrieve(
+        event.data.object.id,
+      );
+      const clerkUserId = subscription.metadata.clerk_user_id;
+      if (!clerkUserId) {
+        return NextResponse.error();
+      }
+      await clerkClient().users.updateUser(clerkUserId, {
+        privateMetadata: {
+          stripeCustomerId: null,
+          stripeSubscriptionId: null,
+        },
+        publicMetadata: {
+          subscriptionPlan: null,
+        },
+      });
+    }
   }
-
   return NextResponse.json({ received: true });
 };

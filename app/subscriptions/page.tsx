@@ -3,8 +3,17 @@ import { Card, CardContent, CardHeader } from "../_components/ui/card";
 import { CheckIcon, XIcon } from "lucide-react";
 import { Badge } from "../_components/ui/badge";
 import AcquirePlanButton from "./_componentes/acqure-plan-button";
+import { auth, clerkClient } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 const SubscriptionPage = async () => {
+  const { userId } = await auth();
+  if (!userId) {
+    redirect("/login");
+  }
+  const user = await clerkClient().users.getUser(userId);
+  // const currentMonthTransactions = await getCurrentMonthTransactions();
+  const hasPremiumPlan = user.publicMetadata.subscriptionPlan == "premium";
   return (
     <>
       <Navbar />
@@ -37,7 +46,7 @@ const SubscriptionPage = async () => {
 
           <Card className="w-[450px]">
             <CardHeader className="relative border-b border-solid py-8">
-              {true && (
+              {hasPremiumPlan && (
                 <Badge className="absolute left-4 top-12 bg-primary/10 text-primary">
                   Ativo
                 </Badge>
