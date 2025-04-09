@@ -29,6 +29,7 @@ npx shadcn@2.1.3 add card
 npx shadcn@2.1.3 add chart
 npx shadcn@2.1.3 add scroll-area
 npx shadcn@2.1.3 add progress
+npx shadcn@2.1.3 add tooltip
 
 asChild // usa para dizer que deve renderizar o filho, verificar os casos onde foi usado
 
@@ -87,3 +88,10 @@ https://medium.com/@khalil.abid.tn/mastering-next-js-structuring-your-large-scal
 # integration with strype
 
 1 - create a product
+
+
+
+
+https://console.neon.tech/
+https://dashboard.stripe.com/
+https://dashboard.clerk.com/
