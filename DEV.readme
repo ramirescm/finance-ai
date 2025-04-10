@@ -95,3 +95,9 @@ https://medium.com/@khalil.abid.tn/mastering-next-js-structuring-your-large-scal
 https://console.neon.tech/
 https://dashboard.stripe.com/
 https://dashboard.clerk.com/
+
+
+deploy prod
+url de producao banco neon 
+webhook url stripe 
+adicionar o url de producao local e rodar npx prisma migrate deploy
