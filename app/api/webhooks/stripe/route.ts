@@ -22,17 +22,13 @@ export const POST = async (request: Request) => {
 
   switch (event.type) {
     case "invoice.paid": {
-      const invoice = event.data.object;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const invoice = event.data.object as any;
       const customer = invoice.customer;
 
-      // Correto: subscription_details está dentro de parent
       const subscription_details = invoice.parent?.subscription_details;
       const subscription = subscription_details?.subscription;
       const clerkUserId = subscription_details?.metadata?.clerk_user_id;
-
-      console.log("User:", clerkUserId);
-      console.log("Customer:", customer);
-      console.log("Subscription ID:", subscription);
 
       if (!clerkUserId) {
         console.log("errrooooooo");
